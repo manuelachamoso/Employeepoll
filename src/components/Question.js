@@ -65,7 +65,7 @@ const Question = () => {
 
   if (questionAnswer) {
     return (
-      <div className="choose-answer">
+      <div className="choose-answer"  data-testid="results">
          <div className="answer-container">
         <img
           src={users[questions[questionIndex]["author"]]["avatarURL"]}

@@ -62,7 +62,8 @@ const Login = () => {
           id="username"
           required
           onChange={handleUsername}
-          data-testid="un"
+          data-testid="username"
+          className="username"
         />
         Password:
         <input 
@@ -71,7 +72,8 @@ const Login = () => {
            id="password"
            required
            onChange={handlePassword}
-           data-testid="pa"
+           data-testid="password"
+           className="password"
         />
         <input
           data-testid="submit"

@@ -34,7 +34,7 @@ const Leaderboard = () => {
         Leaderboard
       </h1>
       </div>
-    <div className="leaderboard">
+    <div className="leaderboard" data-testid="leaderboardscore">
       {[...sortScores()]
         .sort((one, two) => two.totalNumber - one.totalNumber)
         .map((user) => {
@@ -42,7 +42,7 @@ const Leaderboard = () => {
             <div
               key={user.id}
             >
-              <div className="user-leader">
+              <div className="user-leader" data-testid="userleaderscore">
                 <ul>
                   <li>
                     <img
@@ -51,18 +51,19 @@ const Leaderboard = () => {
                       alt="userProfile"
                     ></img>
                   </li>
-                  <li className="user-info">
+                  <li className="user-info" data-testid="user">
                     {currentUser.id === user.id ?  <span> {user.name} (You)</span> : <span> {user.name}</span>}
                   </li>
+                
 
-                  <li className="info">
+                  <li className="info" data-testid="askedquestions">
                     {user.numberQuestion} Question(s)
                   </li>
-                  <li className="info">
+                  <li className="info" data-testid="numberanswer">
                     {user.numberAnswer} Answers(s)
                   </li>
 
-                  <li className="total">
+                  <li className="total" data-testid="totalscore">
                     {user.totalNumber} Total point(s)
                   </li>
                 </ul>

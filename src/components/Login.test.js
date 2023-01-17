@@ -1,31 +1,40 @@
-/* eslint-disable testing-library/prefer-screen-queries */
-/* eslint-disable testing-library/render-result-naming-convention */
 import Login from "./Login";
 import { render, fireEvent, screen } from "@testing-library/react";
-import store from '../features/store'
+import {store} from '../features/store'
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
-import Dashboard from "./Dashboard";
 
-
-describe("testing DOM", () => {
-    it("Login", () => {
-      let component = render(
-        <MemoryRouter>
-          <Provider store={store}>
-            <Login />
-  
-            <Dashboard></Dashboard>
-          </Provider>
-        </MemoryRouter>
-      );
-      // eslint-disable-next-line testing-library/no-node-access
-      let userid = component.getByTestId("un").querySelector("input");
-      fireEvent.change(userid, { target: { value: "tylermcginnis" } });
-      // eslint-disable-next-line testing-library/no-node-access
-      let password = component.getByTestId("pa").querySelector("input");
-      fireEvent.change(password, { target: { value: "abc321" } });
-      let submitButtom = component.getByRole("button");
-      fireEvent.click(submitButtom);
+describe("Login", () => {
+   it("Will throw an error message if the password is not sent", async () => {
+        let view = render(
+            <MemoryRouter>
+                <Provider store={ store }>
+                    <Login />
+                </Provider>
+            </MemoryRouter>
+        );
+        await expect(view).toMatchSnapshot();
+        
+      var user = screen.getByTestId("username");
+      fireEvent.change(user, { target: { value: "sarahedo" } });
+      var submitButton = screen.getByTestId("submit");
+      fireEvent.click(submitButton);
+      expect(
+        screen.getByText(/Error! Incorrect Username or password./i)
+      ).toBeInTheDocument();
     });
-  });
+});
+
+    it("will verify that a user name field, password field, and submit button are present on the page", () => {
+        render(
+          <Provider store={store}>
+            <MemoryRouter>
+              <Login />
+            </MemoryRouter>
+          </Provider>
+        );
+    
+        expect(screen.getByTestId(/username/i)).toBeInTheDocument();
+        expect(screen.getByTestId(/password/i)).toBeInTheDocument();
+        expect(screen.getByTestId(/submit/i)).toBeInTheDocument();
+      });
