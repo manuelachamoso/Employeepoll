@@ -15,26 +15,20 @@ const Question = () => {
   );
   const dispatch = useDispatch();
 
-  const quesIndex = questions.findIndex((ques) => ques.id === id);
+  const questionIndex = questions.findIndex((ques) => ques.id === id);
 
-  if (quesIndex === -1) {
+  if (questionIndex === -1) {
     return <Error />;
   }
 
-  const quesDate = new Date(questions[quesIndex]["timestamp"]);
-  const quesDateFormat =
-    quesDate.getMonth() +
-    1 +
-    "/" +
-    quesDate.getDate() +
-    "/" +
-    quesDate.getFullYear();
+  const timestamp = new Date(questions[questionIndex]["timestamp"]);
+  const timestampDateFormat = timestamp.toLocaleString("en-US", {month: "long", day: "numeric", year: "numeric"});
 
   if (typeof users[currentUser.id] === "undefined") {
     return <Error />;
   }
 
-  const quesAns = users[currentUser.id].answers.hasOwnProperty(id);
+  const questionAnswer = users[currentUser.id].answers.hasOwnProperty(id);
 
   const handleChoiceOne = () => {
     const data = {
@@ -63,59 +57,60 @@ const Question = () => {
       });
     });
   };
+  
 
   if (isLoadingAns || isLoadingQuestions || isLoadingUsers) {
     return <Loading />;
   }
 
-  if (quesAns) {
+  if (questionAnswer) {
     return (
       <div className="choose-answer">
          <div className="answer-container">
         <img
-          src={users[questions[quesIndex]["author"]]["avatarURL"]}
+          src={users[questions[questionIndex]["author"]]["avatarURL"]}
           alt="profile"
         ></img>
         <p className="creator">
-          Poll created by {questions[quesIndex]["author"]} on {quesDateFormat}
+          Poll created by {questions[questionIndex]["author"]} on {timestampDateFormat}
         </p>
               <p className="results">
                 Results:
               </p>
               <ul>
                 <li>
-                <span className="votes">Number of votes: {questions[quesIndex]["optionOne"]["votes"].length}</span>. (
+                <span className="votes">Number of votes: {questions[questionIndex]["optionOne"]["votes"].length}</span>. (
                   {Math.round(
-                    (questions[quesIndex]["optionOne"]["votes"].length /
-                      (questions[quesIndex]["optionOne"]["votes"].length +
-                        questions[quesIndex]["optionTwo"]["votes"].length)) *
+                    (questions[questionIndex]["optionOne"]["votes"].length /
+                      (questions[questionIndex]["optionOne"]["votes"].length +
+                        questions[questionIndex]["optionTwo"]["votes"].length)) *
                       100
                   )}
-                  %) would rather {questions[quesIndex]["optionOne"]["text"]}
+                  %) would rather {questions[questionIndex]["optionOne"]["text"]}
                 </li>
                 <li>
-                   <span className="votes">Number of votes: {questions[quesIndex]["optionTwo"]["votes"].length}</span>. (
+                   <span className="votes">Number of votes: {questions[questionIndex]["optionTwo"]["votes"].length}</span>. (
                   {Math.round(
-                    (questions[quesIndex]["optionTwo"]["votes"].length /
-                      (questions[quesIndex]["optionOne"]["votes"].length +
-                        questions[quesIndex]["optionTwo"]["votes"].length)) *
+                    (questions[questionIndex]["optionTwo"]["votes"].length /
+                      (questions[questionIndex]["optionOne"]["votes"].length +
+                        questions[questionIndex]["optionTwo"]["votes"].length)) *
                       100
                   )}
-                  %) would rather {questions[quesIndex]["optionTwo"]["text"]}
+                  %) would rather {questions[questionIndex]["optionTwo"]["text"]}
                 </li>
                 <li className="your-choice">
                     <p>
                   <span>You </span>voted for {" "}
-                  {questions[quesIndex]["optionOne"]["votes"].includes(
+                  {questions[questionIndex]["optionOne"]["votes"].includes(
                     currentUser.id
                   )
-                    ? questions[quesIndex]["optionOne"]["text"]
-                    : questions[quesIndex]["optionTwo"]["text"]}
+                    ? questions[questionIndex]["optionOne"]["text"]
+                    : questions[questionIndex]["optionTwo"]["text"]}
                     </p>
                 </li>
               </ul>
             </div>
-            <p className="thanks">Thank you for voting!</p>
+            <p className="thanks">Thanks for voting!</p>
           </div>
     );
   }
@@ -123,16 +118,16 @@ const Question = () => {
     <div className="choose-answer">
         <div className="answer-container">
       <img
-        src={users[questions[quesIndex]["author"]]["avatarURL"]}
+        src={users[questions[questionIndex]["author"]]["avatarURL"]}
         alt="profile"
       ></img>
       <p className="creator">
-        Poll created by {questions[quesIndex]["author"]} on {quesDateFormat}
+        Poll created by {questions[questionIndex]["author"]} on {timestampDateFormat}
       </p>
       <p className="current-user">{currentUser.name}, would you rather...</p>
       <hr />
       <p className="answer-question">
-        {questions[quesIndex]["optionOne"]["text"]}
+        {questions[questionIndex]["optionOne"]["text"]}
       </p>
       <div className="answer-button">
         <button 
@@ -144,7 +139,7 @@ const Question = () => {
       <hr />
 
       <p  className="answer-question">
-        {questions[quesIndex]["optionTwo"]["text"]}
+        {questions[questionIndex]["optionTwo"]["text"]}
       </p>
       <div className="answer-button">
         <button className="choice-button"

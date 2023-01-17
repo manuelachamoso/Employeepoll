@@ -7,7 +7,6 @@ export const store = configureStore({
   reducer: {
     currentUser: currentUserReducer,
     currentAnswered: currentAnsweredReducer,
-    
     questions: allQuestionsReducer,
   },
 });

@@ -62,24 +62,24 @@ const Login = () => {
           id="username"
           required
           onChange={handleUsername}
-          className="username"
+          data-testid="un"
         />
         Password:
-        <input
-          type="password"
-          name="password"
-          id="password"
-          required
-          onChange={handlePassword}
-          className="password"
+        <input 
+           type="password"
+           name="password"
+           id="password"
+           required
+           onChange={handlePassword}
+           data-testid="pa"
         />
         <input
+          data-testid="submit"
           type="submit"
-          value="Submit"
           className="button-submit"
         ></input>
         {loginError ? (
-          <p className="login-error">
+          <p data-testid="er" className="login-error">
             Error! Incorrect username or password.
           </p>
         ) : (

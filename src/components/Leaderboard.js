@@ -11,7 +11,7 @@ const Leaderboard = () => {
     return authorQuestion.length;
   };
 
-  const getAllUsers = () => {
+  const sortScores = () => {
     const userKeys = Object.keys(users);
     let initUsers = [];
     userKeys.map((userKey) => {
@@ -31,12 +31,12 @@ const Leaderboard = () => {
     <>
     <div className="leader-title">
       <h1>
-        Leader Board
+        Leaderboard
       </h1>
       </div>
     <div className="leaderboard">
-      {[...getAllUsers()]
-        .sort((a, b) => b.totalNumber - a.totalNumber)
+      {[...sortScores()]
+        .sort((one, two) => two.totalNumber - one.totalNumber)
         .map((user) => {
           return (
             <div

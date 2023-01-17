@@ -15,6 +15,7 @@ const Addpoll = () => {
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
 
+
   const handleOptionOne = (event) => {
     setOptionOne(event.target.value);
   };
