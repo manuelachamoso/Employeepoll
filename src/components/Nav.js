@@ -1,40 +1,45 @@
-import { Link, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setUser } from "../reducers/userSlice";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser} from "../reducers/userSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-   const nonactive = "text-gray-500";
+  const { currentUser } = useSelector((store) => store.currentUser);
 
-  const active = "text-black font-bold";
-
-  const location = useLocation();
 
   return (
     <div className="container-navbar">
       <nav className="navbar">
+        <div className= 'nav-bar'>
         <button className="nav-button">
-        <Link to="/" className={location.pathname === "/" ? active : nonactive}>
+        <Link to="/">
           Home
         </Link>
         </button>
         <button className="nav-button" >
-        <Link className={location.pathname === "/add" ? active : nonactive}
-          to="/addpoll"
+        <Link 
+          to="/add"
         >
           Add Poll
         </Link>
         </button>
         <button className="nav-button">
-        <Link className={location.pathname === "/leaderboard" ? active : nonactive}
+        <Link 
           to="/leaderboard"
         >
           Leaderboard
         </Link>
         </button>
-        <button className="logout" onClick={() => {dispatch(setUser(""))}}>
+        </div>
+        <div className="nav-bar-two">
+        {currentUser ? (
+        <p>Welcome, {currentUser.name}  <button className="logout" onClick={() => {dispatch(setUser(""))}}>
         Logout
-        </button>
+        </button> </p>
+        ) : (
+          <p></p>
+        )}
+        </div>
       </nav>
     </div>
   );

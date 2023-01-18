@@ -18,6 +18,5 @@ describe("Navbar", () => {
       expect(screen.getByText(/home/i)).toBeInTheDocument();
       expect(screen.getByText(/add/i)).toBeInTheDocument();
       expect(screen.getByText(/leaderboard/i)).toBeInTheDocument();
-      expect(screen.getByText(/logout/i)).toBeInTheDocument();
     });
 });

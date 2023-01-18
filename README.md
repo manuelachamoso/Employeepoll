@@ -4,7 +4,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## About the project
 
+- It's built with React, Redux, React Router, & Redux Thunk.
+- This app is the second of three projects required for Udacity's React Nanodegree program.
+
 This project entitled Employee Poll is for employees to create their own polls and answer those of their colleagues. We have implemented functionality so that the user may login to the system, and once logged in, the user can see who has yet to vote on the poll, as well as who has already voted.
+
+## Login
+To login you can use one of the four usernames.
+| Username        | Password    |
+| ------------- |:-------------:| 
+| sarahedo      | password123   | 
+| tylermcginnis | abc321        |   
+| mtsamis       | xyz123        |  
+| zoshikanlu    | pass246        |  
 
 ## Menu
 The first page is the the main menu. Where you can see the ones that were answered by him and the ones that haven't yet. Then when voting, the user can see how many people have voted and what percentage they have.

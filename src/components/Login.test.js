@@ -16,7 +16,7 @@ describe("Login", () => {
         await expect(view).toMatchSnapshot();
         
       var user = screen.getByTestId("username");
-      fireEvent.change(user, { target: { value: "sarahedo" } });
+      fireEvent.change(user, { target: { value: "zoshikanlu" } });
       var submitButton = screen.getByTestId("submit");
       fireEvent.click(submitButton);
       expect(
@@ -38,3 +38,5 @@ describe("Login", () => {
         expect(screen.getByTestId(/password/i)).toBeInTheDocument();
         expect(screen.getByTestId(/submit/i)).toBeInTheDocument();
       });
+
+      

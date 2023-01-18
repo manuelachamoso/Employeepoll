@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Will throw an error message if the password is not sent 1`] = `
+exports[`App will render the App component properly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>

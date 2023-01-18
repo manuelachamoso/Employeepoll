@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../reducers/userSlice";
 import Home from "./Home";
+import Navbar from "./Nav";
 
 
 const Login = () => {
@@ -42,7 +43,9 @@ const Login = () => {
   }
 
   return (
+   
     <div className="login-container">
+       <Navbar />
     <div className="login">
       <div className="profile"><img src="https://cdn0.iconfinder.com/data/icons/unigrid-flat-human-vol-2/90/011_101_anonymous_anonym_hacker_vendetta_user_human_avatar-512.png" alt="" />
       </div>

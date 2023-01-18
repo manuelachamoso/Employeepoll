@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { saveQuestion } from "../reducers/questionsSlice";
 import Loading from "./Loading";
 
-const Addpoll = () => {
+const Add = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser, isLoadingUsers } = useSelector((store) => store.currentUser);
@@ -79,4 +79,4 @@ const Addpoll = () => {
     </div>
   );
 };
-export default Addpoll;
+export default Add;

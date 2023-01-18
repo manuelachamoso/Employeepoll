@@ -22,8 +22,8 @@ const Home = () => {
   }
 
   return (
-    <div className="home">
-      <div className="home-container">
+    <div className="home" >
+      <div className="home-container" data-testid='home'>
       <h1>
         Employee Polls
       </h1>

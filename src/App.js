@@ -2,7 +2,7 @@ import Navbar from "./components/Nav";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./components/Home";
-import Addpoll from "./components/Addpoll";
+import Add from "./components/Add";
 import Leaderboard from "./components/Leaderboard";
 import Login from "./components/Login";
 import Error from "./components/Error";
@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route path="*" element={<Error />} />
         <Route path="/" on exact element={<Home />}></Route>
-        <Route path="/addpoll" exact element={<Addpoll />}></Route>
+        <Route path="/add" exact element={<Add />}></Route>
         <Route path="/leaderboard" exact element={<Leaderboard />}></Route>
         <Route path="/login" exact element={<Login />}></Route>
 

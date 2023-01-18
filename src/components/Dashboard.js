@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+
 const Dashboard = () => {
-    const { questions} = useSelector((store) => store.questions);
+    const { questions } = useSelector((store) => store.questions);
     const { currentUser } = useSelector((store) => store.currentUser);
     const { isAnswered } = useSelector((store) => store.currentAnswered);
 
@@ -13,7 +14,7 @@ const Dashboard = () => {
             return false;
         }
     } 
-
+    
     return (
         <div className="dashboard">
         <ul>
@@ -22,11 +23,13 @@ const Dashboard = () => {
             .map((question) => {
             return isAnswered
                 ? hasVoted(question) && (
+                    
                     <div className="questions"
                     key={question.id}>
                     <p className="question-rather">
                         Would you rather
                     </p>
+                    <p className="date-question">{new Date(question.timestamp).toDateString()}</p>
                     <li>
                         <p className="question-option">
                         {question.optionOne.text}
@@ -52,6 +55,7 @@ const Dashboard = () => {
                         <p className="question-rather">
                         Would you rather
                         </p>
+                        <p className="date-question">{new Date(question.timestamp).toDateString()}</p>
                         <li>
                         <p className="question-option">
                             {question.optionOne.text}
@@ -59,6 +63,7 @@ const Dashboard = () => {
                         <span className="or">or </span>
                         <p className="question-option">
                             {question.optionTwo.text}
+
                         </p>
                         <Link
                             className="check-answer"
