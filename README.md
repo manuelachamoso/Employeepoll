@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setup
+- Command for installing the dependencies - npm install or yarn install.
+- Command for launching the project - npm start or yarn start.
 ## About the project
 
 - It's built with React, Redux, React Router, & Redux Thunk.
